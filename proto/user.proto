@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+service UserService {
+  rpc GetUser (UserRequest) returns (UserResponse); // Unary
+  rpc ListUsers (Empty) returns (stream UserResponse); // Server Streaming
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string name = 2;
+  int32 age = 3;
+}
+
+message Empty {}
